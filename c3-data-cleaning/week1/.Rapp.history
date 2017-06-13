@@ -1,0 +1,131 @@
+a <- c(3,5,6)
+plot(a)
+hist(a)
+a <- c(3,3,5,6,5,3,2,4,1)
+hist(a)
+sort(a)
+seq(10)
+seq(1, 10, by=3)
+combi <- rbind(train, test)#
+train <- read.csv("train.csv")#
+train <- read.csv("train.csv", stringsAsFactors=FALSE)#
+test <- read.csv("test.csv", stringsAsFactors=FALSE)#
+test$Survived <- NA#
+combi <- rbind(train, test)#
+#
+combi$Title <- sapply(combi$Name, FUN=function(x) { strsplit(x, split='[,.]')[[1]][2]})#
+#
+combi$Title <- sub(' ', '', combi$Title)#
+#
+combi$Title[combi$Title %in% c('Mme', 'Mle')] <- 'Mlle'#
+#
+combi$Title[combi$Title %in% c('Capt', 'Don', 'Major', 'Sir')] <- 'Sir'#
+combi$Title[combi$Title %in% c('Dona', 'Lady', 'the Countess', 'Jonkheer')] <- 'Lady'#
+combi$Title <- factor(combi$Title)#
+#
+combi$Surname <- sapply(combi$Name, FUN=function(x) {strsplit(x, split='[,.]')[[1]][1]})#
+combi$FamilyID <- paste(as.character(combi$FamilySize), combi$Surname, sep="")#
+#
+combi$FamilyID[combi$FamilySize <= 2] <- 'Small'#
+#
+combi$FamilySize <- combi$SibSp + combi$Parch + 1#
+combi$Surname <- sapply(combi$Name, FUN=function(x) {strsplit(x, split='[,.]')[[1]][1]})#
+combi$FamilyID <- paste(as.character(combi$FamilySize), combi$Surname, sep="")#
+combi$FamilyID[combi$FamilySize <= 2] <- 'Small'#
+#
+famIDs <- data.frame(table(combi$FamilyID))#
+famIDs <- famIDs[famIDs$Freq <= 2,]#
+combi$FamilyID[combi$FamilyID %in% famIDs$Var1] <- 'Small'#
+combi$FamilyID <- factor(combi$FamilyID)#
+#
+combi$Embarked[c(62,830)] = "S"#
+combi$Embarked <- factor(combi$Embarked)#
+combi$Fare[1044] <- median(combi$Fare, na.rm=TRUE)#
+install.packages('randomForest')#
+library(randomForest)#
+install.packages('party')#
+library(party)#
+#
+combi$Sex <- factor(combi$Sex)#
+#
+train <- combi[1:891,]#
+test <- combi[892:1309,]#
+#
+set.seed(415)#
+fit <- cforest(as.factor(Survived) ~ Pclass + Sex + Age + SibSp + Parch + Fare +##
+                                       Embarked + Title,#
+                 data = train, ##
+                 controls=cforest_unbiased(ntree=2000, mtry=3))#
+Prediction <- predict(fit, test, OOB=TRUE, type = "response")#
+submit <- data.frame(PassengerId = test$PassengerId, Survived = Prediction)#
+write.csv(submit, file="randomforest.csv", row.names=FALSE)
+install.package("Kernel Smoothing")
+installs.package("Kernel Smoothing")
+install.packages("Kernel Smoothing")
+install.packages("KernelSmoothing")
+install.packages("KernelSmooth")
+install.packages("KernSmooth")
+library(KernSmooth)
+getwd()
+setwd("/Users/xin")
+getwd()
+dir()
+cd "onlinecourse/"
+cd("colinecourse")
+setwd("onlinecourse/coursera/specializations-data-science")
+setwd("c3-data-cleaning")
+dir()
+setwd("week1")
+dir()
+library("data.table")
+install.packages("data.table")
+library("data.table")
+dataURL <- "https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2Fss06pid.csv";#
+download.file(dataURL, destfile="data/q5data.csv", method="curl");#
+data <- fread("data/q5data.csv");
+data
+DT <- fread("data/q5data.csv")
+DT
+DT["pwgtp15"]
+data.table(DT, "pwgtp15")
+DT[, c(pwgtp76, pwgtp77)]
+DT[, pwgtp75]
+tapply(DT$pwgtp15,DT$SEX,mean)
+mean(DT$pwgtp15,by=DT$SEX)
+rowMeans(DT)[DT$SEX==1]; rowMeans(DT)[DT$SEX==2]
+mean(DT[DT$SEX==1,]$pwgtp15); mean(DT[DT$SEX==2,]$pwgtp15)
+check <- function(y, t) {#
+    message(sprintf("Elapsed time: %.10f", t[3]))#
+    print(y)#
+}#
+t <- system.time(y <- sapply(split(DT$pwgtp15, DT$SEX), mean))#
+check(y, t)
+check <- function(y, t) {#
+    message(sprintf("Elapsed time: %.10f", t[3]))#
+    print(y)#
+}#
+t <- system.time(y <- sapply(split(DT$pwgtp15, DT$SEX), mean))#
+check(y, t)
+check <- function(DT, f) {
+d}
+t <- system.time(3 + 5)
+t
+check <- function(DT, f) {
+t <- system.time(y <- f(DT));
+message(sprintf("Elapsed time: %.10f", t[3]));
+print(y);
+}
+check(DT, function(DT) {tapply(DT$pwgtp15,DT$SEX,mean)})
+check(DT, function(DT) {mean(DT$pwgtp15,by=DT$SEX)})
+check <- function(DT, f) {#
+	t <- system.time(y <- f(DT));#
+	message(sprintf("Elapsed time: %.10f", t[3]));#
+	print(y);#
+}#
+#
+check(DT, function(DT) {tapply(DT$pwgtp15,DT$SEX,mean)})#
+check(DT, function(DT) {mean(DT$pwgtp15,by=DT$SEX) })#
+check(DT, function(DT) {rowMeans(DT)[DT$SEX==1]; rowMeans(DT)[DT$SEX==2] })#
+check(DT, function(DT) {mean(DT[DT$SEX==1,]$pwgtp15); mean(DT[DT$SEX==2,]$pwgtp15) })#
+check(DT, function(DT) { sapply(split(DT$pwgtp15,DT$SEX),mean) })#
+check(DT, function(DT) { DT[,mean(pwgtp15),by=SEX]})

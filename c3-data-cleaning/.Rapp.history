@@ -1,0 +1,243 @@
+a <- c(3,5,6)
+plot(a)
+hist(a)
+a <- c(3,3,5,6,5,3,2,4,1)
+hist(a)
+sort(a)
+seq(10)
+seq(1, 10, by=3)
+combi <- rbind(train, test)#
+train <- read.csv("train.csv")#
+train <- read.csv("train.csv", stringsAsFactors=FALSE)#
+test <- read.csv("test.csv", stringsAsFactors=FALSE)#
+test$Survived <- NA#
+combi <- rbind(train, test)#
+#
+combi$Title <- sapply(combi$Name, FUN=function(x) { strsplit(x, split='[,.]')[[1]][2]})#
+#
+combi$Title <- sub(' ', '', combi$Title)#
+#
+combi$Title[combi$Title %in% c('Mme', 'Mle')] <- 'Mlle'#
+#
+combi$Title[combi$Title %in% c('Capt', 'Don', 'Major', 'Sir')] <- 'Sir'#
+combi$Title[combi$Title %in% c('Dona', 'Lady', 'the Countess', 'Jonkheer')] <- 'Lady'#
+combi$Title <- factor(combi$Title)#
+#
+combi$Surname <- sapply(combi$Name, FUN=function(x) {strsplit(x, split='[,.]')[[1]][1]})#
+combi$FamilyID <- paste(as.character(combi$FamilySize), combi$Surname, sep="")#
+#
+combi$FamilyID[combi$FamilySize <= 2] <- 'Small'#
+#
+combi$FamilySize <- combi$SibSp + combi$Parch + 1#
+combi$Surname <- sapply(combi$Name, FUN=function(x) {strsplit(x, split='[,.]')[[1]][1]})#
+combi$FamilyID <- paste(as.character(combi$FamilySize), combi$Surname, sep="")#
+combi$FamilyID[combi$FamilySize <= 2] <- 'Small'#
+#
+famIDs <- data.frame(table(combi$FamilyID))#
+famIDs <- famIDs[famIDs$Freq <= 2,]#
+combi$FamilyID[combi$FamilyID %in% famIDs$Var1] <- 'Small'#
+combi$FamilyID <- factor(combi$FamilyID)#
+#
+combi$Embarked[c(62,830)] = "S"#
+combi$Embarked <- factor(combi$Embarked)#
+combi$Fare[1044] <- median(combi$Fare, na.rm=TRUE)#
+install.packages('randomForest')#
+library(randomForest)#
+install.packages('party')#
+library(party)#
+#
+combi$Sex <- factor(combi$Sex)#
+#
+train <- combi[1:891,]#
+test <- combi[892:1309,]#
+#
+set.seed(415)#
+fit <- cforest(as.factor(Survived) ~ Pclass + Sex + Age + SibSp + Parch + Fare +##
+                                       Embarked + Title,#
+                 data = train, ##
+                 controls=cforest_unbiased(ntree=2000, mtry=3))#
+Prediction <- predict(fit, test, OOB=TRUE, type = "response")#
+submit <- data.frame(PassengerId = test$PassengerId, Survived = Prediction)#
+write.csv(submit, file="randomforest.csv", row.names=FALSE)
+install.package("Kernel Smoothing")
+installs.package("Kernel Smoothing")
+install.packages("Kernel Smoothing")
+install.packages("KernelSmoothing")
+install.packages("KernelSmooth")
+install.packages("KernSmooth")
+library(KernSmooth)
+getwd()
+setwd("/Users/xin")
+getwd()
+dir()
+cd "onlinecourse/"
+cd("colinecourse")
+set("onlinecourse/coursera/specializations-data-science")
+setwd("onlinecourse/coursera/specializations-data-science")
+setwd("week2")
+dir
+dir()
+setwd("c2-r-programming/week2")
+dir()
+source("pollutantmean.R")
+source("complete.R")
+source("corr.R")
+pollutantmean("specdata", "nitrate")
+source("pollutantmean.R")
+pollutantmean("specdata", "nitrate")
+cc <- complete("specdata", c(6, 10, 20, 34, 100, 200, 310))#
+print(cc$nobs)
+cc <- complete("specdata", 54)#
+print(cc$nobs)
+set.seed(42)#
+cc <- complete("specdata", 332:1)#
+use <- sample(332, 10)#
+print(cc[use, "nobs"])
+cr <- corr("specdata")                #
+cr <- sort(cr)                #
+set.seed(868)                #
+out <- round(cr[sample(length(cr), 5)], 4)#
+print(out)
+cr <- corr("specdata", 129)                #
+cr <- sort(cr)                #
+n <- length(cr)                #
+set.seed(197)                #
+out <- c(n, round(cr[sample(n, 5)], 4))#
+print(out)
+cr <- corr("specdata", 2000)                #
+n <- length(cr)                #
+cr <- corr("specdata", 1000)                #
+cr <- sort(cr)#
+print(c(n, round(cr, 4)))
+file.exists("Data")
+dir.create("data")
+dir.delete("data")
+dir.remove("data")
+help dir
+help(dir)
+setwd("..")
+dir9)
+dir()
+setwd("..")
+dir()
+dir.create("c3-data-cleaning")
+setwd("c3-data-cleaning")
+fileUrl <- "https://data.baltimorecity.gov/api/views/dz54-2aru/rows.csv?accessType=DOWNLOAD"
+dir.create("Data")
+dir.mv("Data", "data")
+download.file(fileUrl, destfile ="data/camera.csv", method="curl")
+list.files("data")
+date()
+dateDownloaded <- date()
+dateDownloaded
+cameraData <- read.table("data/cameras.csv")
+cameraData <- read.table("data/camera.csv")
+cameraData <- read.csv("data/camera.csv")
+head(cameraData)
+head(cameraData)
+library(jsonlite)
+library(jsonlite)
+install.packages(jsonlite)
+install.packages("jsonlite")
+library(jsonlite)
+jsonData <- fromJSON("https://api.github.com/users/jtleek/repos")
+install.packages("curl")
+jsonData <- fromJSON("https://api.github.com/users/jtleek/repos")
+names(jsonData)
+jsonData
+jsonData["id"]
+jsonData["full name"]
+jsonData$owner$login
+myjson <- toJSON(iris, pretty=T)
+cat(myjson)
+data.frame(iris)
+head(iris, n=5)
+head(iris, n=3)
+head(iris)
+iris[, b:=mean(Sepal.Width + Petal.Length)]
+#Q1#
+dataURL = "https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2Fss06hid.csv"#
+download.file(dataURL, destfile="data/q1data.csv", method="curl")
+data = read.csv("data/q1data.csv")
+head(data)
+data$VAL
+data[data$VAL == 24]
+class(data$VAL)
+length(data$VAL)
+length(data$VAL == 24)
+data$VAL == 24
+data[is.na(data$VAL)]$VAL = 1
+is.na(data$VAL)
+data[is.na(data$VAL), "VAL"] = 1
+length(data[data$VAL == 24])
+data[data$VAL == 24]
+data["VAL"]
+class(data["VAL"][1])
+class(data["VAL"])
+data[["VAL"]]
+ss = data[["VAL"]];
+length(ss[ss == 24])
+data <- read.csv("data/q1data.csv");#
+data[is.na(data$VAL), "VAL"] = 1;
+values = data[["VAL"]];#
+length(values[values == 24]);
+dataURL <- "https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2FDATA.gov_NGAP.xlsx";#
+download.file(dataURL, destfile="data/q2data.xlsx", method="curl");#
+#
+data <- read.xlsx("data/q2data.xlsx");
+library(xlsx)
+install.packages("xlsx")
+library(xlsx)
+library(xlsx);
+install.packages("xlsx")
+library(xlsx);
+install.packages("rJava")
+library(xlsx);
+library(xlsx);
+packages <- c("data.table", "xlsx", "XML")#
+sapply(packages, require, character.only = TRUE, quietly = TRUE)
+install.packages("XML")
+library("XML")
+sapply(packages, require, character.only = TRUE, quietly = TRUE)
+library("xlsx")
+library(XML)
+dataURL <- "https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2Frestaurants.xml";#
+doc <- xmlTreeParse(dataURL, useInternal=TRUE);#
+rootNode <- xmlRoot(doc);
+dataURL <- "https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2Frestaurants.xml";#
+doc <- xmlTreeParse(dataURL, useInternal=TRUE);#
+rootNode <- xmlRoot(doc);
+dataURL <- "https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2Frestaurants.xml";#
+doc <- xmlTreeParse(dataURL, useInternal=TRUE);#
+rootNode <- xmlRoot(doc);dataURL <- "https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2Frestaurants.xml";#
+doc <- xmlTreeParse(dataURL, useInternal=TRUE);#
+rootNode <- xmlRoot(doc);
+dataURL <- "https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2Frestaurants.xml";#
+doc <- xmlTreeParse(dataURL, useInternal=TRUE);#
+rootNode <- xmlRoot(doc);
+dataURL <- "https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2Frestaurants.xml";
+doc <- xmlTreeParse(dataURL, useInternal=T)
+doc <- xmlTreeParse(dataURL, useInternal=T, method="curl")
+dataURL <- "http://d396qusza40orc.cloudfront.net/getdata%2Fdata%2Frestaurants.xml";
+doc <- xmlTreeParse(dataURL, useInternal=T)
+dataURL <- "http://d396qusza40orc.cloudfront.net/getdata%2Fdata%2Frestaurants.xml";#
+doc <- xmlTreeParse(dataURL, useInternal=TRUE);#
+rootNode <- xmlRoot(doc);
+rootNode
+xmlName(rootNode)
+rootNode[1]
+rootNode[1][1]
+rootNode[[1]]
+rootNode[[1]][1]
+names(rootNode[[1]][[1]])
+zipcode <- xpathSApply(rootNode, "//zipcode", xmlValue)#
+table(zipcode == 21231)
+dataURL <- "https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2Fss06pid.csv";#
+download.file(dataURL, destfile="data/q5data.csv", method="curl");#
+data <- fread("data/q5data.csv");
+gc
+gc()
+free -m
+library(data.table)_
+library(data.table)
+install.package("data.table")
