@@ -1,24 +1,30 @@
 Q1. Which of the following are courses in the Data Science Specialization? Select all that apply.
 Statistical Inference
 Exploratory Data Analysis
+Practical Machine Learning
 
 Q2. Why are we using R for the course track? Select all that apply.
 R is free.
 R is one of the most widely used programming languages for Data Science.
 R has a nice IDE, Rstudio.
+Packages are easy to install and "play nicely" together.
 
 Q3. What are good ways to find answers to questions in this course track? Select all that apply.
 Searching Google.
 Posting to the course discussion forum
 Asking a skilled friend.
 Looking through R help files.
+Searching Stack Overflow
 
 Q4. What are characteristics of good questions on the message boards? Select all that apply.
 Provides the minimum amount of information necessary to communicate the problem.
 Includes follow-ups if you answer your own question.
+Explicitly lists versions of software being used.
+Describes the goal of the analysis.
 
 Q5. Which of the following packages provides machine learning functionality? Select all that apply
 kernlab
 rpart
 pamr
 caret
+gbm
