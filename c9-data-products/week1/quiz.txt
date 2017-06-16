@@ -1,0 +1,43 @@
+Q1. Which of the following are absolutely necessary for creating a functioning shiny app? (Check all that apply)
+
+A ui.R file containing a call to shinyUI()
+
+A server.R file containing a call to shinyServer()
+
+Q2. What is incorrect about the following syntax in ui.R?
+
+library(shiny)
+shinyUI(pageWithSidebar(  
+  headerPanel("Data science FTW!"),  
+  sidebarPanel(    
+     h2('Big text')    
+     h3('Sidebar')  
+  ),  
+  mainPanel(      
+       h3('Main Panel text')  
+  )
+))
+
+Missing a comma in the sidebar panel
+
+
+
+Q3. Consider the following in ui.R
+
+And the following in server.R
+
+The server.R output name isn't the same as the plotOutput command used in ui.R.
+
+
+Q4. What are the main differences between creating a Shiny Gadget and creating a regular Shiny App? (Check all that apply)
+
+Shiny Gadgets are designed to have small user interfaces that fit on one page.
+
+Shiny Gadgets are designed to be used by R users in the middle of a data analysis.
+
+
+Q5. Consider the following R script:
+
+Why isn’t it doing what we want?
+
+No arguments are defined for pickXY()
