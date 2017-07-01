@@ -1,0 +1,6 @@
+n <- 9
+μ <- 1100
+σ <- 30
+quantile = 0.975 # is 95% with 2.5% on both sides of the range
+confidenceInterval = μ + c(-1, 1) * qt(quantile, df=n-1) * σ / sqrt(n)
+confidenceInterval
