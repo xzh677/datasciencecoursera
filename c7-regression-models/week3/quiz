@@ -1,0 +1,24 @@
+Q1
+mtcars$cyl <- factor(mtcars$cyl)
+fit <- lm(mpg ~ cyl + wt, mtcars)
+summary(fit)
+
+Q2
+
+mtcars$cyl <- factor(mtcars$cyl)
+fit <- lm(mpg ~ cyl + wt, mtcars)
+summary(fit)
+fit_without_wt <- lm(mpg ~ cyl, mtcars)
+summary(fit_without_wt)
+
+Q5
+x <- c(0.586, 0.166, -0.042, -0.614, 11.72)
+y <- c(0.549, -0.026, -0.127, -0.751, 1.344)
+fit <- lm(y ~ x)
+hatvalues(fit)
+
+Q6
+x <- c(0.586, 0.166, -0.042, -0.614, 11.72)
+y <- c(0.549, -0.026, -0.127, -0.751, 1.344)
+fit <- lm(y ~ x)
+influence.measures(fit)

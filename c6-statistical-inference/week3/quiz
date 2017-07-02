@@ -1,6 +1,42 @@
+Q1.
 n <- 9
-μ <- 1100
-σ <- 30
-quantile = 0.975 # is 95% with 2.5% on both sides of the range
-confidenceInterval = μ + c(-1, 1) * qt(quantile, df=n-1) * σ / sqrt(n)
-confidenceInterval
+mn <- 1100
+s <- 30
+# 0.975 is 95% with 2.5% on both sides of the range
+ci <- mu + c(-1, 1) * qt(0.975, n - 1) * s / sqrt(n)
+ci
+
+Q2.
+n <- 9
+mn <- -2
+ci <- 0
+sigma <-  (ci - mn * sqrt(n)) / qt(0.975, n - 1)
+sigma
+
+
+Q4.
+
+n_new <- 10
+n_old <- 10
+var_new <- 0.6
+var_old <- 0.68
+mn_new <- 3
+mn_old <- 5
+
+s <- sqrt(((n_old - 1) * var_old + (n_new - 1) * var_new) / (n_new + n_old - 2))
+
+ci <- mn_new - mn_old + c(-1, 1) * qt(0.975, n_new + n_old - 2) * s * (1 / n_old + 1 / n_new) ^ 0.5
+
+
+Q6.
+
+n_t <- 9
+n_p <- 9
+s_t <- 1.5
+s_p <- 1.8
+mn_t <- -3
+mn_p <- 1
+
+s <- sqrt(((n_t - 1) * s_t^2 + (n_p - 1) * s_p^2) / (n_t + n_p - 2))
+ci <- mn_t - mn_p + c(-1, 1) * qt(0.95, df = n_t + n_p - 2) * s * (1 / n_t + 1 / n_p)^0.5
+
